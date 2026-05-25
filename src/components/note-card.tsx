@@ -20,7 +20,7 @@ export function NoteCard({ note }: NoteCardProps) {
         />
       </div>
       <div className="space-y-4 p-6">
-        <div className="flex items-center justify-between gap-4 text-xs font-medium uppercase tracking-[0.22em] text-emerald-700">
+        <div className="flex items-center justify-between gap-4 text-xs font-medium uppercase tracking-[0.22em] text-primary">
           <span>{note.category}</span>
           <span className="text-slate-400">{note.readTime}</span>
         </div>

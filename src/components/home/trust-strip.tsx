@@ -3,24 +3,21 @@ import { trustStrip } from "@/lib/site-content";
 
 export function TrustStrip() {
   return (
-    <section className="pb-10 md:pb-14">
+    <section className="pb-12 md:pb-16">
       <div className="site-container">
-        <Reveal className="surface-card overflow-hidden px-6 py-5 md:px-8">
-          <div className="flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between">
-            <p className="max-w-2xl text-sm font-medium leading-7 text-slate-700">
-              {trustStrip.title}
-            </p>
-
-            <div className="flex flex-wrap gap-2">
-              {trustStrip.clients.map((client) => (
-                <span
-                  key={client}
-                  className="rounded-full border border-slate-200 bg-slate-50 px-4 py-2 text-xs font-medium uppercase tracking-[0.18em] text-slate-500"
-                >
-                  {client}
-                </span>
-              ))}
-            </div>
+        <Reveal className="space-y-6 text-center">
+          <p className="text-xs font-semibold uppercase tracking-[0.26em] text-slate-400">
+            {trustStrip.title}
+          </p>
+          <div className="flex flex-wrap items-center justify-center gap-3">
+            {trustStrip.clients.map((client) => (
+              <span
+                key={client}
+                className="rounded-full border border-primary/18 bg-primary/6 px-5 py-2.5 text-xs font-semibold uppercase tracking-[0.18em] text-primary/70"
+              >
+                {client}
+              </span>
+            ))}
           </div>
         </Reveal>
       </div>

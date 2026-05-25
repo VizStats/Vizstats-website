@@ -62,7 +62,7 @@ export default function AboutPage() {
             {capabilities.map((capability, index) => (
               <Reveal key={capability.title} delay={index * 70}>
                 <article className="surface-card card-hover h-full p-6">
-                  <p className="text-xs font-medium uppercase tracking-[0.22em] text-emerald-700">
+                  <p className="text-xs font-medium uppercase tracking-[0.22em] text-primary">
                     0{index + 1}
                   </p>
                   <h2 className="mt-4 text-2xl font-semibold tracking-[-0.04em] text-slate-950">
@@ -90,7 +90,7 @@ export default function AboutPage() {
             {processSteps.map((step, index) => (
               <Reveal key={step.title} delay={index * 70}>
                 <article className="surface-card card-hover h-full p-6">
-                  <p className="text-xs font-medium uppercase tracking-[0.22em] text-emerald-700">
+                  <p className="text-xs font-medium uppercase tracking-[0.22em] text-primary">
                     Step {index + 1}
                   </p>
                   <h3 className="mt-4 text-2xl font-semibold tracking-[-0.04em] text-slate-950">

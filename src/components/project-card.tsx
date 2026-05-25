@@ -35,7 +35,7 @@ export function ProjectCard({
 
       <div className="flex flex-1 flex-col p-6 md:p-8">
         <div className="space-y-3">
-          <p className="text-xs font-medium uppercase tracking-[0.22em] text-emerald-700">
+          <p className="text-xs font-medium uppercase tracking-[0.22em] text-primary">
             {project.client} · {project.type}
           </p>
           <h3 className="text-2xl font-semibold tracking-[-0.04em] text-slate-950">

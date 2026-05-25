@@ -143,7 +143,7 @@ export function ContactForm() {
           id="message"
           value={formState.message}
           onChange={(event) => updateField("message", event.target.value)}
-          className="min-h-36 rounded-[1.25rem] border border-slate-200 bg-white px-4 py-3 text-sm text-slate-900 outline-none transition focus:border-emerald-700 focus:ring-4 focus:ring-emerald-700/10"
+          className="min-h-36 rounded-[1.25rem] border border-slate-200 bg-white px-4 py-3 text-sm text-slate-900 outline-none transition focus:border-primary focus:ring-4 focus:ring-primary/10"
           placeholder="Tell us about the audience, the data, and what needs to be true at launch."
         />
       </label>
@@ -155,11 +155,11 @@ export function ContactForm() {
       ) : null}
 
       {success ? (
-        <div className="rounded-[1.25rem] border border-emerald-200 bg-emerald-50 px-4 py-4">
-          <p className="text-sm font-semibold text-emerald-900">
+        <div className="rounded-[1.25rem] border border-primary/20 bg-primary/8 px-4 py-4">
+          <p className="text-sm font-semibold text-primary">
             {success.message}
           </p>
-          <p className="mt-2 text-sm text-emerald-800">{success.nextStep}</p>
+          <p className="mt-2 text-sm text-primary/80">{success.nextStep}</p>
         </div>
       ) : null}
 
@@ -170,7 +170,7 @@ export function ContactForm() {
         <Button
           type="submit"
           size="lg"
-          className="rounded-full bg-slate-950 px-6 text-white hover:bg-slate-800"
+          className="rounded-full bg-primary px-6 text-white hover:bg-primary/90"
           disabled={isPending}
         >
           {isPending ? "Sending..." : "Tell us about your project"}
@@ -203,7 +203,7 @@ function FormField({
         type={type}
         value={value}
         onChange={(event) => onChange(event.target.value)}
-        className="h-12 rounded-[1.25rem] border border-slate-200 bg-white px-4 text-sm text-slate-900 outline-none transition focus:border-emerald-700 focus:ring-4 focus:ring-emerald-700/10"
+        className="h-12 rounded-[1.25rem] border border-slate-200 bg-white px-4 text-sm text-slate-900 outline-none transition focus:border-primary focus:ring-4 focus:ring-primary/10"
       />
     </label>
   );
@@ -228,7 +228,7 @@ function SelectField({
       <select
         value={value}
         onChange={(event) => onChange(event.target.value)}
-        className="h-12 rounded-[1.25rem] border border-slate-200 bg-white px-4 text-sm text-slate-900 outline-none transition focus:border-emerald-700 focus:ring-4 focus:ring-emerald-700/10"
+        className="h-12 rounded-[1.25rem] border border-slate-200 bg-white px-4 text-sm text-slate-900 outline-none transition focus:border-primary focus:ring-4 focus:ring-primary/10"
       >
         {options.map((option) => (
           <option key={option} value={option}>

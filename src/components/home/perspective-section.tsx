@@ -24,7 +24,7 @@ export function PerspectiveSection() {
                       <h3 className="text-2xl font-semibold tracking-[-0.04em] text-slate-950">
                         {card.title}
                       </h3>
-                      <p className="text-sm font-medium uppercase tracking-[0.18em] text-emerald-700">
+                      <p className="text-sm font-medium uppercase tracking-[0.18em] text-primary">
                         {card.subtitle}
                       </p>
                     </div>

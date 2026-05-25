@@ -118,7 +118,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
             {project.approach.map((item, index) => (
               <Reveal key={item} delay={index * 70}>
                 <article className="surface-card card-hover p-6">
-                  <p className="text-xs font-medium uppercase tracking-[0.22em] text-emerald-700">
+                  <p className="text-xs font-medium uppercase tracking-[0.22em] text-primary">
                     Approach {index + 1}
                   </p>
                   <p className="mt-4 text-sm leading-7 text-slate-600">{item}</p>

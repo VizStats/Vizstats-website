@@ -69,7 +69,7 @@ export function ScrollStorySection() {
           {scrollBeats.map((beat, index) => (
             <Reveal key={beat.title} delay={index * 70}>
               <article className="surface-card card-hover p-6 md:p-8">
-                <p className="text-xs font-medium uppercase tracking-[0.22em] text-emerald-700">
+                <p className="text-xs font-medium uppercase tracking-[0.22em] text-primary">
                   Beat {index + 1}
                 </p>
                 <h3 className="mt-4 text-2xl font-semibold tracking-[-0.04em] text-slate-950">

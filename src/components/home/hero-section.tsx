@@ -9,7 +9,16 @@ const featuredProject = projects[0];
 
 export function HeroSection() {
   return (
-    <section className="section-space pt-16 md:pt-24">
+    <section className="section-space relative overflow-hidden pt-16 md:pt-24">
+      <div
+        className="pointer-events-none absolute -top-32 right-0 h-[640px] w-[640px] rounded-full opacity-60"
+        style={{
+          background:
+            "radial-gradient(circle, rgba(91,68,224,0.12) 0%, transparent 70%)",
+          filter: "blur(60px)",
+        }}
+      />
+
       <div className="site-container grid gap-12 lg:grid-cols-[0.98fr_1.02fr] lg:items-center">
         <div className="space-y-8">
           <Reveal>
@@ -33,7 +42,7 @@ export function HeroSection() {
             <Button
               asChild
               size="lg"
-              className="rounded-full bg-slate-950 px-6 text-white hover:bg-slate-800"
+              className="rounded-full bg-primary px-7 text-white hover:bg-primary/90"
             >
               <Link href="/contact">
                 {heroCopy.primaryCta}
@@ -66,8 +75,8 @@ export function HeroSection() {
                 <div className="absolute inset-0 bg-gradient-to-tr from-slate-950/38 via-slate-950/0 to-white/10" />
               </div>
 
-              <div className="absolute left-8 top-8 max-w-[13rem] rounded-[1.35rem] border border-white/65 bg-white/88 p-4 shadow-lg backdrop-blur">
-                <p className="text-xs font-medium uppercase tracking-[0.22em] text-emerald-700">
+              <div className="absolute left-8 top-8 max-w-[13rem] rounded-[1.35rem] border border-white/65 bg-white/90 p-4 shadow-lg backdrop-blur">
+                <p className="text-xs font-medium uppercase tracking-[0.22em] text-primary">
                   Featured release
                 </p>
                 <p className="mt-3 text-lg font-semibold tracking-[-0.03em] text-slate-950">

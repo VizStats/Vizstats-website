@@ -22,7 +22,7 @@ export function StatsSection() {
                 <p className="text-4xl font-semibold tracking-[-0.05em] text-slate-950">
                   <CountUpNumber value={metric.value} suffix={metric.suffix} />
                 </p>
-                <p className="mt-4 text-xs font-medium uppercase tracking-[0.22em] text-emerald-700">
+                <p className="mt-4 text-xs font-medium uppercase tracking-[0.22em] text-primary">
                   {metric.label}
                 </p>
                 <p className="mt-4 text-sm leading-7 text-slate-600">

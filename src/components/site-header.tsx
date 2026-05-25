@@ -2,53 +2,112 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { navigation } from "@/lib/site-data";
+import { useState } from "react";
+import { Menu, X } from "lucide-react";
+import { navigation } from "@/lib/site-content";
 import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
 
 export function SiteHeader() {
   const pathname = usePathname();
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <header className="pointer-events-none fixed inset-x-0 top-0 z-50 px-3 pt-3">
-      <div className="site-container pointer-events-auto">
-        <div className="flex flex-col gap-3 rounded-[2rem] border border-white/10 bg-[#06111b]/82 px-4 py-4 shadow-[0_24px_80px_rgba(0,0,0,0.38)] backdrop-blur-xl md:flex-row md:items-center md:justify-between md:px-5 md:py-3">
-          <Link href="/" className="flex items-center gap-3">
-            <span className="flex size-10 items-center justify-center rounded-full border border-white/12 bg-white/[0.05]">
-              <span className="size-2 rounded-full bg-[#59d8ff]" />
+    <header className="fixed inset-x-0 top-0 z-50 border-b border-slate-200/80 bg-[#fcfbf8]/88 backdrop-blur-md">
+      <div className="site-container">
+        <div className="flex min-h-20 items-center justify-between gap-4">
+          <Link href="/" className="flex items-center gap-3" aria-label="Vizstats homepage">
+            <span className="flex size-10 items-center justify-center rounded-full border border-emerald-900/10 bg-emerald-50">
+              <span className="size-2 rounded-full bg-emerald-700" />
             </span>
-            <span className="min-w-0">
-              <span className="block text-[0.65rem] uppercase tracking-[0.34em] text-white/55">
-                VizStats
-              </span>
-              <span className="block text-sm font-semibold text-white md:text-base">
-                Decision rooms for live data.
-              </span>
+            <span className="text-lg font-semibold tracking-[-0.04em] text-slate-900">
+              Vizstats
             </span>
           </Link>
 
-          <nav className="overflow-x-auto">
-            <ul className="flex items-center gap-1 rounded-full border border-white/10 bg-white/[0.04] p-1">
+          <nav className="hidden items-center gap-7 md:flex">
+            {navigation.map((item) => {
+              const isActive =
+                pathname === item.href || pathname.startsWith(`${item.href}/`);
+
+              return (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  onClick={() => setIsOpen(false)}
+                  className={cn(
+                    "text-sm font-medium text-slate-600 transition hover:text-slate-900",
+                    isActive && "text-slate-900"
+                  )}
+                >
+                  {item.label}
+                </Link>
+              );
+            })}
+          </nav>
+
+          <div className="hidden md:block">
+            <Button
+              asChild
+              className="rounded-full bg-slate-950 px-5 text-white hover:bg-slate-800"
+            >
+              <Link href="/contact" onClick={() => setIsOpen(false)}>
+                Tell us about your project
+              </Link>
+            </Button>
+          </div>
+
+          <button
+            type="button"
+            className="inline-flex size-11 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-900 md:hidden"
+            onClick={() => setIsOpen((current) => !current)}
+            aria-expanded={isOpen}
+            aria-controls="mobile-navigation"
+            aria-label={isOpen ? "Close navigation menu" : "Open navigation menu"}
+          >
+            {isOpen ? <X className="size-5" /> : <Menu className="size-5" />}
+          </button>
+        </div>
+
+        <div
+          id="mobile-navigation"
+          className={cn(
+            "overflow-hidden transition-[max-height,opacity] duration-300 md:hidden",
+            isOpen ? "max-h-96 pb-5 opacity-100" : "max-h-0 opacity-0"
+          )}
+        >
+          <div className="surface-card flex flex-col gap-2 p-4">
+            <nav className="flex flex-col gap-1">
               {navigation.map((item) => {
-                const isActive = pathname === item.href;
+                const isActive =
+                  pathname === item.href || pathname.startsWith(`${item.href}/`);
 
                 return (
-                  <li key={item.href}>
-                    <Link
-                      href={item.href}
-                      className={cn(
-                        "block rounded-full px-3 py-2 text-[0.68rem] font-medium uppercase tracking-[0.26em] transition md:px-4",
-                        isActive
-                          ? "bg-white text-slate-950"
-                          : "text-white/72 hover:bg-white/[0.08] hover:text-white"
-                      )}
-                    >
-                      {item.label}
-                    </Link>
-                  </li>
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    onClick={() => setIsOpen(false)}
+                    className={cn(
+                      "rounded-2xl px-4 py-3 text-sm font-medium transition",
+                      isActive
+                        ? "bg-emerald-50 text-emerald-800"
+                        : "text-slate-700 hover:bg-slate-50 hover:text-slate-950"
+                    )}
+                  >
+                    {item.label}
+                  </Link>
                 );
               })}
-            </ul>
-          </nav>
+            </nav>
+            <Button
+              asChild
+              className="mt-3 rounded-full bg-slate-950 text-white hover:bg-slate-800"
+            >
+              <Link href="/contact" onClick={() => setIsOpen(false)}>
+                Tell us about your project
+              </Link>
+            </Button>
+          </div>
         </div>
       </div>
     </header>

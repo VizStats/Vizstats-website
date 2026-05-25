@@ -1,49 +1,52 @@
 import type { Metadata } from "next";
-import { ContactPlanner } from "@/components/contact-planner";
-import { contactPromises } from "@/lib/site-data";
+import { ContactForm } from "@/components/contact-form";
+import { Reveal } from "@/components/reveal";
+import { SectionHeading } from "@/components/section-heading";
+import { contactChecklist } from "@/lib/site-content";
 
 export const metadata: Metadata = {
   title: "Contact",
   description:
-    "Build a VizStats launch plan for an executive room, operations wall, or premium client analytics surface.",
+    "Tell Vizstats about the audience, the data, and the public experience you need to launch.",
 };
 
 export default function ContactPage() {
   return (
-    <div className="space-y-10 pb-16">
-      <section className="pt-10">
-        <div className="site-container grid gap-6 lg:grid-cols-[0.95fr_1.05fr]">
-          <div className="glass-panel rounded-[2rem] p-6 md:p-8">
-            <p className="eyebrow">Contact</p>
-            <h1 className="section-title mt-4 max-w-3xl">
-              Bring the decision that matters most. We will shape the room
-              around it.
-            </h1>
-            <p className="copy-muted mt-5 max-w-xl text-lg">
-              The fastest way to make this real is to define the audience, the
-              ritual, and the signal that should never again be hidden in a
-              spreadsheet tab.
-            </p>
-          </div>
-
-          <div className="grid gap-4">
-            {contactPromises.map((promise) => (
-              <div
-                key={promise}
-                className="glass-panel rounded-[2rem] p-6 text-lg leading-8 text-white/78"
-              >
-                {promise}
+    <>
+      <section className="section-space pt-16 md:pt-24">
+        <div className="site-container grid gap-8 lg:grid-cols-[0.86fr_1.14fr]">
+          <div className="space-y-6">
+            <Reveal>
+              <SectionHeading
+                eyebrow="Contact"
+                title="Tell us about your project."
+                description="We take on a small number of engagements each year. If your data is meant to reach beyond the people who made it, this is the place to start."
+              />
+            </Reveal>
+            <Reveal delay={100}>
+              <div className="surface-card p-6">
+                <p className="text-sm font-semibold text-slate-950">
+                  What helps start the conversation
+                </p>
+                <div className="mt-5 grid gap-3">
+                  {contactChecklist.map((item) => (
+                    <div
+                      key={item}
+                      className="rounded-2xl border border-slate-200 bg-slate-50 px-4 py-4 text-sm leading-7 text-slate-600"
+                    >
+                      {item}
+                    </div>
+                  ))}
+                </div>
               </div>
-            ))}
+            </Reveal>
           </div>
-        </div>
-      </section>
 
-      <section>
-        <div className="site-container">
-          <ContactPlanner />
+          <Reveal delay={140}>
+            <ContactForm />
+          </Reveal>
         </div>
       </section>
-    </div>
+    </>
   );
 }
